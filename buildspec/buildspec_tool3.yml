@@ -1,0 +1,35 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+    commands:
+      - echo "Install phase - Installing dependencies"
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
+      
+  pre_build:
+    commands:
+      - echo "Pre-build phase - Checking environment"
+      - python --version
+      - pip list
+      
+  build:
+    commands:
+      - echo "Build phase - Running metadata registration"
+      - python src/register_metadata/main.py
+      
+  post_build:
+    commands:
+      - echo "Post-build phase - Metadata registration completed"
+      - echo "Metadata registration completed successfully"
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: '.'
+
+cache:
+  paths:
+    - '/root/.cache/pip/**/*'

@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.python-version
+.coverage
+.claude
+CLAUDE.md
+docs/
+.pytest_cache/
